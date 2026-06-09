@@ -35,4 +35,10 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/aws-devops-app:v1
             docker stop app || true
             docker rm app || true
-            docker run -d -p 80:5000 --name app ${{ secrets.DOCKER_USERNAME }}/aws-devops-app:v1     
+            docker stop nginx || true
+            docker rm nginx || true
+            docker run -d -p 80:5000 --name app ${{ secrets.DOCKER_USERNAME }}/aws-devops-app:v1
+
+
+
+    
